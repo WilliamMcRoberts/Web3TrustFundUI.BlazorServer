@@ -1,8 +1,4 @@
-using MetaMask.Blazor;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Syncfusion.Blazor;
-using Web3TrustFund;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.ConfigureServices();

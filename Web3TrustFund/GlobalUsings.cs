@@ -6,3 +6,5 @@ global using System.Numerics;
 global using MetaMask.Blazor.Exceptions;
 global using Microsoft.AspNetCore.Components;
 global using Syncfusion.Blazor;
+global using Web3TrustFund;
+global using System.ComponentModel.DataAnnotations;

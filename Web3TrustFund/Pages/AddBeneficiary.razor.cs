@@ -6,12 +6,10 @@ namespace Web3TrustFund.Pages
     {
         [Inject]
         public MetaMaskService MetaMaskService { get; set; } = default !;
-        public DateTime min { get; set; } = new DateTime(2020, 1, 5, 9, 0, 0);
-        public DateTime max { get; set; } = new DateTime(2020, 1, 24, 18, 0, 0);
+        public DateTime Min { get; set; } = DateTime.Now;
         public string BeneficiaryAddress { get; set; }
 
         public decimal AmountEthDeposit { get; set; }
-
         public DateTime? ReleaseDate { get; set; }
 
         public string? FunctionResult { get; set; }
