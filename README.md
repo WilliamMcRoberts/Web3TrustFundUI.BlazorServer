@@ -2,4 +2,10 @@
 Updated UI for Web3TrustFund
 
 
-Blazor Server UI for Web3TrustFund using Syncfusion components
+A .Net6 Blazor Server UI for Web3TrustFund using Syncfusion components
+
+clone repository
+cd Web3TrustFund
+dotnet run
+
+
