@@ -1,5 +1,5 @@
 # Web3TrustFundUI
-Updated UI for Web3TrustFund
+Updated UI for Web3TrustFund Using .NET Blazor Server
 
 
 A .Net6 Blazor Server UI for Web3TrustFund using Syncfusion components
