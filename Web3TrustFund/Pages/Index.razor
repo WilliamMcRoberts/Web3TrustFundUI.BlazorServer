@@ -16,36 +16,36 @@
 <PageTitle>Web 3 Trust Fund</PageTitle>
 
           
-                    <div class="tabs">
-                    <SfTab HeaderPlacement="HeaderPosition.Top" CssClass="default-tab" LoadOn="ContentLoad.Init" Height="250px"  Width="550px" OverflowMode="@OverflowMode.Popup" >
-                        <TabAnimationSettings>
-                            <TabAnimationPrevious Effect="AnimationEffect.ZoomIn"></TabAnimationPrevious>
-                            <TabAnimationNext Effect="AnimationEffect.ZoomOut"></TabAnimationNext>
-                        </TabAnimationSettings>
-                        <TabItems>
-                            <TabItem Content="@LatestTweetText"> @*Replace your required tab1 boby content here *@
-                                <ChildContent>
-                                    <TabHeader Text="Twitter" IconCss="e-twitter"></TabHeader> @*Replace your required header1 text here *@
-                                </ChildContent>
-                            </TabItem>
-                            <TabItem Content="@Content2">  @*Replace your required tab2 boby content here *@
-                                <ChildContent>
-                                    <TabHeader Text="Facebook" IconCss="e-facebook"></TabHeader> @*Replace your required header2 text here *@
-                                </ChildContent>
-                            </TabItem>
-                            <TabItem Content="@Content3">  @*Replace your required tab2 boby content here *@
-                                <ChildContent>
-                                    <TabHeader Text="About"></TabHeader> @*Replace your required header2 text here *@
-                                </ChildContent>
-                            </TabItem>
-                            <TabItem Content="@Content3">  @*Replace your required tab2 boby content here *@
-                                <ChildContent>
-                                    <TabHeader Text="Contract Address"></TabHeader> @*Replace your required header2 text here *@
-                                </ChildContent>
-                            </TabItem>
-                        </TabItems>
-                    </SfTab> 
-                </div>
+<div class="tabs">
+<SfTab HeaderPlacement="HeaderPosition.Top" CssClass="default-tab" LoadOn="ContentLoad.Init" Height="250px"  Width="550px" OverflowMode="@OverflowMode.Popup" >
+    <TabAnimationSettings>
+        <TabAnimationPrevious Effect="AnimationEffect.ZoomIn"></TabAnimationPrevious>
+        <TabAnimationNext Effect="AnimationEffect.ZoomOut"></TabAnimationNext>
+    </TabAnimationSettings>
+    <TabItems>
+        <TabItem Content="@LatestTweetText"> 
+            <ChildContent>
+                <TabHeader Text="Twitter" IconCss="e-twitter"></TabHeader>
+            </ChildContent>
+        </TabItem>
+        <TabItem Content="@Content2"> 
+            <ChildContent>
+                <TabHeader Text="Facebook" IconCss="e-facebook"></TabHeader>
+            </ChildContent>
+        </TabItem>
+        <TabItem Content="@Content3">
+            <ChildContent>
+                <TabHeader Text="About"></TabHeader>
+            </ChildContent>
+        </TabItem>
+        <TabItem Content="@Content3">
+            <ChildContent>
+                <TabHeader Text="Contract Address"></TabHeader>
+            </ChildContent>
+        </TabItem>
+    </TabItems>
+</SfTab> 
+</div>
 
 
 @code {
