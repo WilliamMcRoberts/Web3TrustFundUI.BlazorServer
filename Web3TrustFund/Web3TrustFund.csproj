@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>9bbbba2d-d92e-4f38-ad77-e755801bcb40</UserSecretsId>
   </PropertyGroup>
   
   <ItemGroup>
@@ -16,6 +17,7 @@
     <PackageReference Include="Syncfusion.Blazor.Buttons" Version="20.1.0.52" />
     <PackageReference Include="Syncfusion.Blazor.DropDowns" Version="20.1.0.52" />
     <PackageReference Include="Syncfusion.Blazor.Themes" Version="20.1.0.52" />
+    <PackageReference Include="TwitterSharp" Version="2.1.0" />
   </ItemGroup>
   
 

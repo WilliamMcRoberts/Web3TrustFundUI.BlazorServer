@@ -2,50 +2,123 @@
 
 @using Syncfusion.Blazor.Inputs
 @using Syncfusion.Blazor.Navigations
-<div id = "ControlRegion">
-   <div class="control-section">
-        <div class="col-lg-12">
-            <div class="control_wrapper">
-                <div>
-    <SfTab CssClass="default-tab" OverflowMode="@OverflowMode.Scrollable" HeaderPlacement="HeaderPosition.Top" Height="250px"  Width="550px">
-    <TabAnimationSettings>
-            <TabAnimationPrevious Effect="AnimationEffect.FadeIn"></TabAnimationPrevious>
-            <TabAnimationNext Effect="AnimationEffect.FadeOut"></TabAnimationNext>
-        </TabAnimationSettings>
-    <TabItems>
-        <TabItem Content="@Content1">
-            <ChildContent>
-                <TabHeader Text="Twitter"  IconCss="e-twitter"></TabHeader>
-            </ChildContent>
-        </TabItem>
-        <TabItem Content="@Content2">
-            <ChildContent>
-                <TabHeader Text="Facebook"  IconCss="e-facebook"></TabHeader>
-            </ChildContent>
-        </TabItem>
-        <TabItem Content="@Content3">
-            <ChildContent>
-                <TabHeader Text="Whatsapp" IconCss="e-whatsapp"></TabHeader>
-            </ChildContent>
-        </TabItem>
-    </TabItems>
-</SfTab>
-            </div>
-        </div>
-    </div>  
-</div>
+@using Syncfusion.Blazor.Buttons
+@using TwitterSharp
+@using TwitterSharp.Client
+@using TwitterSharp.Response
+@using TwitterSharp.Request
+@using TwitterSharp.Request.AdvancedSearch
+@inject IConfiguration _config
+
+@inject HttpClient Http
+
+
+<PageTitle>Web 3 Trust Fund</PageTitle>
+
+          
+                    <div class="tabs">
+                    <SfTab HeaderPlacement="HeaderPosition.Top" CssClass="default-tab" LoadOn="ContentLoad.Init" Height="250px"  Width="550px" OverflowMode="@OverflowMode.Popup" >
+                        <TabAnimationSettings>
+                            <TabAnimationPrevious Effect="AnimationEffect.ZoomIn"></TabAnimationPrevious>
+                            <TabAnimationNext Effect="AnimationEffect.ZoomOut"></TabAnimationNext>
+                        </TabAnimationSettings>
+                        <TabItems>
+                            <TabItem Content="@LatestTweetText"> @*Replace your required tab1 boby content here *@
+                                <ChildContent>
+                                    <TabHeader Text="Twitter" IconCss="e-twitter"></TabHeader> @*Replace your required header1 text here *@
+                                </ChildContent>
+                            </TabItem>
+                            <TabItem Content="@Content2">  @*Replace your required tab2 boby content here *@
+                                <ChildContent>
+                                    <TabHeader Text="Facebook" IconCss="e-facebook"></TabHeader> @*Replace your required header2 text here *@
+                                </ChildContent>
+                            </TabItem>
+                            <TabItem Content="@Content3">  @*Replace your required tab2 boby content here *@
+                                <ChildContent>
+                                    <TabHeader Text="About"></TabHeader> @*Replace your required header2 text here *@
+                                </ChildContent>
+                            </TabItem>
+                            <TabItem Content="@Content3">  @*Replace your required tab2 boby content here *@
+                                <ChildContent>
+                                    <TabHeader Text="Contract Address"></TabHeader> @*Replace your required header2 text here *@
+                                </ChildContent>
+                            </TabItem>
+                        </TabItems>
+                    </SfTab> 
+                </div>
+                
+<div>
 </div>
 
+<div>
+          
+</div>
+
+
+    
+@*<button onclick=@(async () => await PrintWebApiResponse())>Print Web API Response</button>*@
 
 @code {
-    // TODO - Replace content with Twitter stream API, Code behind, background, ETH chart
-    public string Content1 = "Twitter is an online social networking service that enables users to send and read short 140-character" +
-                "messages called tweets.Registered users can read and post tweets, but those who are unregistered can only read" +
-                "them.Users access Twitter through the website interface, SMS or mobile device app Twitter Inc. is based in San" +
-                "Francisco and has more than 25 offices around the world.Twitter was created in March 2006 by Jack Dorsey," +
-                "Evan Williams, Biz Stone, and Noah Glass and launched in July 2006. The service rapidly gained worldwide popularity," +
-                "with more than 100 million users posting 340 million tweets a day in 2012.The service also handled 1.6 billion" +
-                "search queries per day.";
+
+    public static string LatestTweetText { get; set; }
+    public static string TweetText { get; set; }
+    public static string ApiResponse { get; set; }
+    public static string LatestTweetImageUrl { get; set; }
+    public static string bearerToken;
+    public static string userId;
+    
+    //TODO - Method to validate input data
+    //TODO - Fix sizing on tabs
+    //TODO - background image
+
+    protected override async Task OnInitializedAsync()
+    {
+        bearerToken = _config.GetValue<string>("Tokens:BearerToken");
+        userId = _config.GetValue<string>("Tokens:UserId");
+        LatestTweetText = await GetLatestTweetByUserId();
+    }
+
+
+
+
+    public static async Task<string> GetLatestTweetByUserId()
+    {
+
+        var client = new TwitterSharp.Client.TwitterClient(bearerToken);
+        var answer = await client.GetTweetsFromUserIdAsync(userId, new TwitterSharp.Request.Option.TweetSearchOptions
+        {
+            TweetOptions = new[] { TweetOption.Attachments },
+            MediaOptions = new[] { MediaOption.Preview_Image_Url }
+        });
+
+        List<string> tweets = new();
+
+        for (int i = 0; i < answer.Length; i++)
+        {
+            var tweet = answer[i];
+            tweets.Add(tweet.Text);
+
+            Console.WriteLine($"Tweet #{i}");
+            Console.WriteLine(tweet.Text);
+
+            if (tweet.Attachments?.Media?.Any() ?? false)
+            {
+                Console.WriteLine("\nImages:");
+                Console.WriteLine(string.Join("\n", tweet.Attachments.Media.Select(x => x.Url)));
+                LatestTweetImageUrl = string.Join("\n", tweet.Attachments.Media.Select(x => x.Url));
+
+            }
+
+            Console.WriteLine("\n");
+                
+        }
+        return tweets.First();
+    }
+    
+    
+    
+
+    public string Content1 = LatestTweetText;
     public string Content2 = "Facebook is an online social networking service headquartered in Menlo Park, California. Its website was" +
                     "launched on February 4, 2004, by Mark Zuckerberg with his Harvard College roommates and fellow students Eduardo" +
                     "Saverin, Andrew McCollum, Dustin Moskovitz and Chris Hughes.The founders had initially limited the websites" +
@@ -60,25 +133,11 @@
 
 
 <style>
-    .parent {
-        display: flex;
-        margin: 35px;
-        justify-content: center;
+    .e-info:before {
+        content: '\e800';
+    }
+    
 
-    }
-    .btn {
-        width: 25%;
-        float: right;
-        
-    }
-    .parent-submit {
-        display: flex;
-        margin: 35px;
-        justify-content: center
-    }
-    .btn-submit {
-        width: 25%;
-    }
     .default-tab .e-content .e-item {
         font-size: 12px;
         padding: 10px;
@@ -93,13 +152,19 @@
     .default-tab .e-tab-icon {
         font-family: 'Socialicons' !important;
     }
-    .default-tab .e-icons.e-tab-icon {
+    
+    .default-tab .e-icons .e-tab-icon {
         position: relative;
         top: 1px;
     }
     .e-twitter:before {
         content: '\a701';
         color: lightblue;
+    }
+
+    .close:before {
+        content: '\e7e7';
+        color: darkblue;
     }
     .e-facebook:before {
         content: '\a705';
@@ -119,11 +184,13 @@
         color: #8A2BE2;
         font-size: 15px;
 }
-    .control_wrapper {
+    .tabs {
         width: 350px;
         margin: 0 auto;
         padding-top: 25px;
         padding-bottom: 25px;
+        display: flex;
+        flex
     }
     
     .content-wrapper {
@@ -132,6 +199,7 @@
         min-width: 185px;
 		padding-top:35px;
         padding-bottom:35px;
+        
     }
 	.e-float-input.e-numeric.e-input-group {
         margin-top: 40px;
@@ -145,6 +213,10 @@
         color: #8A2BE2;
         border-color: #8A2BE2;
     }
+
+    .e-tab .e-tab-header {
+    background: #FFB6C1 !important;
+}
 
     
    
@@ -171,12 +243,6 @@
         margin-top: 60px;
     }
 
-    .header {
-        text-align: center;
-        border: 4px solid;
-        border-radius: 5px;
-        color: #8A2BE2;
-        border-color: #8A2BE2;
-    }
+ 
 </style>
 

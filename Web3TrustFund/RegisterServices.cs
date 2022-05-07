@@ -11,6 +11,7 @@ namespace Web3TrustFund
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddMetaMaskBlazor();
+            builder.Services.AddMemoryCache();
         }
     }
 }

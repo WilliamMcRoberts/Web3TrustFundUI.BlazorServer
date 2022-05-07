@@ -18,6 +18,7 @@ namespace Web3TrustFund.Pages
 
         public int TimeUntilRelease { get; set; }
 
+
         public async void OnSubmitClicked()
         {
             var timeUntilRelease = ConvertToUnixTimestamp(ReleaseDate);

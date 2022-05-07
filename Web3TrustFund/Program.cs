@@ -1,10 +1,15 @@
 
 
+
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 builder.ConfigureServices();
 
 var app = builder.Build();
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjMxMzkzQDMyMzAyZTMxMmUzMGtiT3piKzNBRXQzM2RsM1VXSjFnR2t1bDh3M3dGaGZkVTRRcmthYVFxbHc9");
+
 
 
 // Configure the HTTP request pipeline.
