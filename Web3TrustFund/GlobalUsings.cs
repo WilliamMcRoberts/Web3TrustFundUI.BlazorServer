@@ -7,4 +7,7 @@ global using MetaMask.Blazor.Exceptions;
 global using Microsoft.AspNetCore.Components;
 global using Syncfusion.Blazor;
 global using Web3TrustFund;
-global using System.ComponentModel.DataAnnotations;
+global using Microsoft.AspNetCore.Components.Web;
+global using Microsoft.JSInterop;
+global using MetaMask.Blazor.Enums;
+global using Syncfusion.Blazor.Navigations;

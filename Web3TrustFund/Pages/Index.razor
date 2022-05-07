@@ -46,17 +46,7 @@
                         </TabItems>
                     </SfTab> 
                 </div>
-                
-<div>
-</div>
 
-<div>
-          
-</div>
-
-
-    
-@*<button onclick=@(async () => await PrintWebApiResponse())>Print Web API Response</button>*@
 
 @code {
 
@@ -70,6 +60,7 @@
     //TODO - Method to validate input data
     //TODO - Fix sizing on tabs
     //TODO - background image
+    //TODO - fix input border
 
     protected override async Task OnInitializedAsync()
     {
@@ -98,18 +89,13 @@
             var tweet = answer[i];
             tweets.Add(tweet.Text);
 
-            Console.WriteLine($"Tweet #{i}");
-            Console.WriteLine(tweet.Text);
 
             if (tweet.Attachments?.Media?.Any() ?? false)
             {
-                Console.WriteLine("\nImages:");
-                Console.WriteLine(string.Join("\n", tweet.Attachments.Media.Select(x => x.Url)));
                 LatestTweetImageUrl = string.Join("\n", tweet.Attachments.Media.Select(x => x.Url));
 
             }
 
-            Console.WriteLine("\n");
                 
         }
         return tweets.First();
@@ -133,9 +119,7 @@
 
 
 <style>
-    .e-info:before {
-        content: '\e800';
-    }
+  
     
 
     .default-tab .e-content .e-item {
@@ -162,10 +146,6 @@
         color: lightblue;
     }
 
-    .close:before {
-        content: '\e7e7';
-        color: darkblue;
-    }
     .e-facebook:before {
         content: '\a705';
         color: darkblue;
@@ -190,7 +170,6 @@
         padding-top: 25px;
         padding-bottom: 25px;
         display: flex;
-        flex
     }
     
     .content-wrapper {
@@ -209,10 +188,7 @@
         font-size: 19px;
     }
 
-    .color {
-        color: #8A2BE2;
-        border-color: #8A2BE2;
-    }
+   
 
     .e-tab .e-tab-header {
     background: #FFB6C1 !important;
