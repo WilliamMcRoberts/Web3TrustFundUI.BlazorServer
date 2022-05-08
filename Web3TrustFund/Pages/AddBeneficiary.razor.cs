@@ -21,8 +21,20 @@ namespace Web3TrustFund.Pages
 
         public async void OnSubmitClicked()
         {
+            
             var timeUntilRelease = ConvertToUnixTimestamp(ReleaseDate);
             await CallSmartContractFunctionAddBeneficiary(BeneficiaryAddress, timeUntilRelease, AmountEthDeposit);
+           
+            
+        }
+
+        private bool ValidateData()
+        {
+            if (BeneficiaryAddress.Length != 42 && !(AmountEthDeposit > 0))
+            {
+                return false;
+            }
+            return true;
         }
 
         public static long ConvertToUnixTimestamp(DateTime? date)

@@ -14,7 +14,7 @@
 <div class="col-lg-12 control-section">
     <div class="control_wrapper">
         <div class="label color">Enter An Address For The Beneficiary:</div>
-        <SfTextBox Placeholder="Beneficiary Address" @bind-Value="@BeneficiaryAddress" FloatLabelType='@FloatLabelType.Auto'></SfTextBox>
+        <SfTextBox Placeholder="@BeneficiaryAddress" @bind-Value="@BeneficiaryAddress" FloatLabelType='@FloatLabelType.Auto'></SfTextBox>
     </div>
 </div>
     </div>
@@ -22,7 +22,7 @@
     <div class="col-lg-12 control-section">
         <div class="control_wrapper">
             <div class="label color">Enter An Amount Of ETH To Deposit:</div>
-            <SfNumericTextBox Placeholder="Amount To Deposit" @bind-Value="@AmountEthDeposit" FloatLabelType="@FloatLabelType.Auto" TValue="decimal" ValidateDecimalOnType="true" Format="n3" Decimals=18 Min=0></SfNumericTextBox>
+            <SfNumericTextBox Placeholder="@AmountEthDeposit.ToString()" @bind-Value="@AmountEthDeposit" FloatLabelType="@FloatLabelType.Auto" TValue="decimal" ValidateDecimalOnType="true" Format="n3" Decimals=18 Min=0></SfNumericTextBox>
         </div>
     </div>
 </div>
@@ -32,7 +32,7 @@
         <div id="wrapper" class="timepicker-control">
                 <div class="control_wrapper">
                     <div class="label color">Enter A Date To Release The Funds:</div>
-                    <SfDatePicker TValue="DateTime?" @bind-Value="@ReleaseDate" PlaceHolder="Release Date" Min="@Min" FloatLabelType="@FloatLabelType.Auto"></SfDatePicker>
+                    <SfDatePicker TValue="DateTime?" @bind-Value="@ReleaseDate" PlaceHolder="@ReleaseDate.ToString()" Min="@Min" FloatLabelType="@FloatLabelType.Auto"></SfDatePicker>
                 </div>
         </div>
         

@@ -66,10 +66,7 @@
     public static string bearerToken;
     public static string userId;
 
-    //TODO - Method to validate input data
-    //TODO - Fix sizing on tabs
     //TODO - background image
-    //TODO - fix input border
 
     protected override async Task OnInitializedAsync()
     {
@@ -77,6 +74,8 @@
         userId = _config.GetValue<string>("Tokens:UserId");
         LatestTweetText = await GetLatestTweetByUserId();
     }
+
+    
 
     public void NavigateToTwitter()
     {
