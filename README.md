@@ -1,6 +1,6 @@
 # Web3TrustFundUI
 
-A .Net6 Blazor Server UI for Web3TrustFund using Syncfusion components
+A .Net6 Blazor Server UI for Web3TrustFund using Syncfusion components and Twitter APIv2
 
 Logs Users In With Metamask:
 
