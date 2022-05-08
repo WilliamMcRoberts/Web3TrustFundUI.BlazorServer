@@ -15,34 +15,41 @@
         </div>
     </div>
 </SfSidebar>
-
 <div class="main">
-    <div class="header">
-        <h2>WEB 3 TRUST FUND</h2>
-        <h6 class="padding-bottom:1rem;">BANKING ON THE FUTURE</h6>
-        <div style="z-index:1111;padding-top:0px">
-            @if (IsSiteConnected)
-        {
-            <div>
-                 <p class="color: #FFFFFF">@SelectedAddressSub : @SelectedNetwork</p>
+    <div class="header-border">
+        <div class="header-container">
+            <div class="header">
+                <h2 class="title-text">WEB 3 TRUST FUND</h2>
+                <h6>BANKING ON THE FUTURE</h6>
+                <div style="z-index:1111;padding-top:0px">
+                    @if (IsSiteConnected)
+                    {
+                        <div>
+                             <p class="color: #FFFFFF">@SelectedAddressSub : @SelectedNetwork</p>
 
-            </div>
+                        </div>
             
-        }
-        else if (!HasMetaMask)
-        {
-            <p>No MetaMask detected. Please install <a href="https://metamask.io" target="_blank">MetaMask</a>.</p>
+                    }
+                    else if (!HasMetaMask)
+                    {
+                        <p>No MetaMask detected. Please install <a href="https://metamask.io" target="_blank">MetaMask</a>.</p>
 
-        }
-        else
-        {
-                    <div class="btn-container">
-                        <SfButton @onclick="ConnectMetaMask" CssClass="e-btn">Connect Metamask</SfButton>
-                    </div>
-        }
+                    }
+                    else
+                    {
+                        <div class="btn-container">
+                            <SfButton @onclick="ConnectMetaMask" CssClass="e-btn">Connect Metamask</SfButton>
+                        </div>
+                    }
         
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    
+    
+
+
     <div class="content px-4">
         @Body
     </div>
@@ -51,10 +58,22 @@
 
 
 
+
 <style>
     .sidebar {
         width: 300px;
         min-width: 300px;
+    }
+
+    .content-container {
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+        
+    }
+
+    .title-text {
+        padding-top: .5rem;
     }
 
     .e-btn {
@@ -100,20 +119,22 @@
     .title {
         font-size: 20px;
     }
-    .main {
-        padding: 3px; 3px; 3px; 3px;
-    }
+   
+    .header-border {
+        border: 4px solid;
+        border-color:  #8A2BE2;
+        background-color: #FFB6C1;
+        /*justify-content: center;*/
+        /*align-content: center;*/
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
 
+    }
+ 
+ 
     
-    .parent {
-        margin: 35px;
-        text-align: center;
-
-    }
-    .btn {
-        width: 25%;
-        
-    }
     .header {
         border: 4px solid;
         border-color: #8A2BE2;
@@ -123,7 +144,10 @@
         text-align: center;
         border-radius: 5px;
         color: #FFFFFF;
-        
+        /*margin-top: 4px;*/
+        margin-bottom: 22px;
+        /*margin-left: 4px;
+        margin-right: 0px;*/
         
         
     }

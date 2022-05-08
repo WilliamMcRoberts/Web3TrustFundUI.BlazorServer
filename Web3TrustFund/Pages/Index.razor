@@ -9,6 +9,7 @@
 @using TwitterSharp.Request
 @using TwitterSharp.Request.AdvancedSearch
 @inject IConfiguration _config
+@inject NavigationManager navManager
 
 @inject HttpClient Http
 
@@ -16,29 +17,40 @@
 <PageTitle>Web 3 Trust Fund</PageTitle>
 
           
-<div class="tabs">
+<div class="tabs-container">
 <SfTab HeaderPlacement="HeaderPosition.Top" CssClass="default-tab" LoadOn="ContentLoad.Init" Height="250px"  Width="550px" OverflowMode="@OverflowMode.Popup" >
     <TabAnimationSettings>
-        <TabAnimationPrevious Effect="AnimationEffect.ZoomIn"></TabAnimationPrevious>
-        <TabAnimationNext Effect="AnimationEffect.ZoomOut"></TabAnimationNext>
+        <TabAnimationPrevious Effect="AnimationEffect.SlideRightOut"></TabAnimationPrevious>
+        <TabAnimationNext Effect="AnimationEffect.SlideRightIn"></TabAnimationNext>
     </TabAnimationSettings>
     <TabItems>
-        <TabItem Content="@LatestTweetText"> 
+        <TabItem> 
             <ChildContent>
                 <TabHeader Text="Twitter" IconCss="e-twitter"></TabHeader>
             </ChildContent>
+            <ContentTemplate>
+                <div>
+                    <div class="btn-link-container">
+                        <button @onclick="NavigateToTwitter" class="twitter-button">Go To Twitter</button>
+                    </div>
+                    <p class="twitter-content">Web 3 Trust Fund Says:</p>
+                    <div class="twitter-content">
+                       "@LatestTweetText"
+                    </div>
+                </div>
+            </ContentTemplate>
         </TabItem>
-        <TabItem Content="@Content2"> 
+        <TabItem> 
             <ChildContent>
                 <TabHeader Text="Facebook" IconCss="e-facebook"></TabHeader>
             </ChildContent>
         </TabItem>
-        <TabItem Content="@Content3">
+        <TabItem>
             <ChildContent>
                 <TabHeader Text="About"></TabHeader>
             </ChildContent>
         </TabItem>
-        <TabItem Content="@Content3">
+        <TabItem>
             <ChildContent>
                 <TabHeader Text="Contract Address"></TabHeader>
             </ChildContent>
@@ -51,12 +63,9 @@
 @code {
 
     public static string LatestTweetText { get; set; }
-    public static string TweetText { get; set; }
-    public static string ApiResponse { get; set; }
-    public static string LatestTweetImageUrl { get; set; }
     public static string bearerToken;
     public static string userId;
-    
+
     //TODO - Method to validate input data
     //TODO - Fix sizing on tabs
     //TODO - background image
@@ -69,7 +78,10 @@
         LatestTweetText = await GetLatestTweetByUserId();
     }
 
-
+    public void NavigateToTwitter()
+    {
+        navManager.NavigateTo("https://twitter.com/web3_trust");
+    }
 
 
     public static async Task<string> GetLatestTweetByUserId()
@@ -89,38 +101,57 @@
             var tweet = answer[i];
             tweets.Add(tweet.Text);
 
-
-            if (tweet.Attachments?.Media?.Any() ?? false)
-            {
-                LatestTweetImageUrl = string.Join("\n", tweet.Attachments.Media.Select(x => x.Url));
-
-            }
-
-                
         }
         return tweets.First();
     }
     
+   }
     
-    
 
-    public string Content1 = LatestTweetText;
-    public string Content2 = "Facebook is an online social networking service headquartered in Menlo Park, California. Its website was" +
-                    "launched on February 4, 2004, by Mark Zuckerberg with his Harvard College roommates and fellow students Eduardo" +
-                    "Saverin, Andrew McCollum, Dustin Moskovitz and Chris Hughes.The founders had initially limited the websites" +
-                    "membership to Harvard students, but later expanded it to colleges in the Boston area, the Ivy League, and Stanford" +
-                    "University.It gradually added support for students at various other universities and later to high - school students.";
-    public string Content3 = "WhatsApp Messenger is a proprietary cross-platform instant messaging client for smartphones that operates" +
-                "under a subscription business model.It uses the Internet to send text messages, images, video, user location and" +
-                "audio media messages to other users using standard cellular mobile numbers. As of February 2016, WhatsApp had a user" +
-                "base of up to one billion,[10] making it the most globally popular messaging application.WhatsApp Inc., based in" +
-                "Mountain View, California, was acquired by Facebook Inc.on February 19, 2014, for approximately US$19.3 billion.";
-}
-
-
+  
 <style>
   
-    
+
+    .e-tab .e-tab-header .e-toolbar-item.e-active {
+    background: #d1f4d1;
+    border: 1px solid;
+    border-color: #8A2BE2;
+}
+    .twitter-content {
+        font-size: 20px;
+        font-family: Helvetica;
+        font-weight: 700;
+        text-align: center;
+    }
+
+   
+    .twitter-button {
+        color: #FFFFFF;
+        background-color: lightblue;
+        border-color: lightblue;
+        border-radius: 15px;
+        border-width: 1px;
+        font-weight: 500;
+        width: 50%;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        border: 2px solid;
+        font-size: 18px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .twitter-button:hover{
+        color: lightblue;
+        background-color: #FFFFFF;
+        border-color: lightblue;
+    }
+   
+
+    .btn-link-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
 
     .default-tab .e-content .e-item {
         font-size: 12px;
@@ -144,6 +175,7 @@
     .e-twitter:before {
         content: '\a701';
         color: lightblue;
+     
     }
 
     .e-facebook:before {
@@ -164,22 +196,17 @@
         color: #8A2BE2;
         font-size: 15px;
 }
-    .tabs {
-        width: 350px;
+    .tabs-container {
+        width: 75%;
         margin: 0 auto;
         padding-top: 25px;
         padding-bottom: 25px;
         display: flex;
+        justify-content: center;
+        text-align: center;
     }
     
-    .content-wrapper {
-        width: 25%;
-        margin: 0 auto;
-        min-width: 185px;
-		padding-top:35px;
-        padding-bottom:35px;
-        
-    }
+    
 	.e-float-input.e-numeric.e-input-group {
         margin-top: 40px;
     }
@@ -192,6 +219,8 @@
 
     .e-tab .e-tab-header {
     background: #FFB6C1 !important;
+    border: 2px solid;
+    border-color: #8A2BE2;
 }
 
     
