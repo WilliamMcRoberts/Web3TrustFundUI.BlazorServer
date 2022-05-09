@@ -17,47 +17,48 @@
 <PageTitle>Web 3 Trust Fund</PageTitle>
 
           
-<div class="tabs-container">
-<SfTab HeaderPlacement="HeaderPosition.Top" CssClass="default-tab" LoadOn="ContentLoad.Init" Height="250px"  Width="550px" OverflowMode="@OverflowMode.Popup" >
-    <TabAnimationSettings>
-        <TabAnimationPrevious Effect="AnimationEffect.SlideRightOut"></TabAnimationPrevious>
-        <TabAnimationNext Effect="AnimationEffect.SlideRightIn"></TabAnimationNext>
-    </TabAnimationSettings>
-    <TabItems>
-        <TabItem> 
-            <ChildContent>
-                <TabHeader Text="Twitter" IconCss="e-twitter"></TabHeader>
-            </ChildContent>
-            <ContentTemplate>
-                <div>
-                    <div class="btn-link-container">
-                        <button @onclick="NavigateToTwitter" class="twitter-button">Go To Twitter</button>
+<div class="tabs-container input-info">
+    <SfTab HeaderPlacement="HeaderPosition.Top" CssClass="default-tab" LoadOn="ContentLoad.Init" Height="250px"  Width="550px" OverflowMode="@OverflowMode.Popup" >
+        <TabAnimationSettings>
+            <TabAnimationPrevious Effect="AnimationEffect.SlideRightOut"></TabAnimationPrevious>
+            <TabAnimationNext Effect="AnimationEffect.SlideRightIn"></TabAnimationNext>
+        </TabAnimationSettings>
+        <TabItems>
+            <TabItem> 
+                <ChildContent>
+                    <TabHeader Text="Twitter" IconCss="e-twitter"></TabHeader>
+                </ChildContent>
+                <ContentTemplate>
+                    <div>
+                        <div class="btn-link-container">
+                            <button @onclick="NavigateToTwitter" class="twitter-button">Go To Twitter</button>
+                        </div>
+                        <p class="twitter-content">Web 3 Trust Fund Says:</p>
+                        <div class="twitter-content">
+                           "@LatestTweetText"
+                        </div>
                     </div>
-                    <p class="twitter-content">Web 3 Trust Fund Says:</p>
-                    <div class="twitter-content">
-                       "@LatestTweetText"
-                    </div>
-                </div>
-            </ContentTemplate>
-        </TabItem>
-        <TabItem> 
-            <ChildContent>
-                <TabHeader Text="Facebook" IconCss="e-facebook"></TabHeader>
-            </ChildContent>
-        </TabItem>
-        <TabItem>
-            <ChildContent>
-                <TabHeader Text="About"></TabHeader>
-            </ChildContent>
-        </TabItem>
-        <TabItem>
-            <ChildContent>
-                <TabHeader Text="Contract Address"></TabHeader>
-            </ChildContent>
-        </TabItem>
-    </TabItems>
-</SfTab> 
+                </ContentTemplate>
+            </TabItem>
+            <TabItem> 
+                <ChildContent>
+                    <TabHeader Text="Facebook" IconCss="e-facebook"></TabHeader>
+                </ChildContent>
+            </TabItem>
+            <TabItem>
+                <ChildContent>
+                    <TabHeader Text="About"></TabHeader>
+                </ChildContent>
+            </TabItem>
+            <TabItem>
+                <ChildContent>
+                    <TabHeader Text="Contract Address"></TabHeader>
+                </ChildContent>
+            </TabItem>
+        </TabItems>
+    </SfTab> 
 </div>
+
 
 
 @code {
@@ -220,6 +221,7 @@
     background: #FFB6C1 !important;
     border: 2px solid;
     border-color: #8A2BE2;
+    border-radius: 15px;
 }
 
     
@@ -234,12 +236,7 @@
         padding-left: 20px;
         display: flex;
     }
-    
-    /*#wrapper {
-        max-width: 280px;
-        margin: 0px auto;
-        padding-top: 20px;
-    }*/
+
     .tabs-wrap {
         padding: 0 0px 10px;
     }

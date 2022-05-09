@@ -9,27 +9,28 @@
 
 
 <PageTitle>Withdraw Funds</PageTitle>
-
-<div id = "ControlRegion">
-   <div class="control-section">
-        <div class="col-lg-12">
+<div class="justify-content-center input-info-withdraw">
+    <div id = "ControlRegion">
+        <div class="col-lg-12 control-section">
             <div class="control_wrapper">
-                <div class="label color">Enter An Amount Of ETH To Withdraw:</div>
-                <SfNumericTextBox Placeholder="@AmountEthWithdraw.ToString()" @bind-Value="@AmountEthWithdraw" FloatLabelType="@FloatLabelType.Auto" TValue="decimal" ValidateDecimalOnType="true" Format="n3" Decimals=18 Min=0></SfNumericTextBox>
+            <div class="fw-bold text-uppercase input-label-withdraw">Enter The Amount Of ETH To Withdraw</div>
+                <SfNumericTextBox CssClass="e-corner e-custom" Placeholder="ETH Amount" @bind-Value="@AmountEthWithdraw" FloatLabelType="@FloatLabelType.Always" TValue="decimal" ValidateDecimalOnType="true" Format="n3" Decimals=18 Min=0></SfNumericTextBox>
             </div>
         </div>
-    </div>  
+    </div>
+    <div class="button-bottom">
+        <div class="btn-container">
+            <SfButton @onclick="OnSubmitClicked" class="e-btn">Submit And Withdraw Funds</SfButton>
+        </div>
+    </div>
 </div>
-<div class="btn-container">
-    <SfButton @onclick="OnSubmitClicked" class="e-btn">Submit And Withdraw Funds</SfButton>
-</div>
-
-<br/>
-
-
 
 <style>
-   
+
+    .e-input-group.e-corner {
+            border-radius: 15px;
+            
+    }
    
     @@font-face {
         font-family: 'button-icons';
@@ -37,9 +38,19 @@
         font-weight: normal;
         font-style: normal;
     }
+
+    .button-bottom {
+       margin-bottom: 40px;
+   }
+
+    .input-label-withdraw {
+        margin-top: 20px;
+
+    }
     .e-float-input.e-control-wrapper:not(.e-error) input:valid ~ label.e-float-text, .e-float-input.e-control-wrapper:not(.e-error) input ~ label.e-label-top.e-float-text {
-        color: #8A2BE2;
+        color: #FFFFFF;
         font-size: 15px;
+        font-weight: bold;
 }
     .control_wrapper {
         width: 350px;
@@ -48,24 +59,6 @@
         padding-bottom: 25px;
     }
     
-    .content-wrapper {
-        width: 25%;
-        margin: 0 auto;
-        min-width: 185px;
-		padding-top:35px;
-        padding-bottom:35px;
-    }
-	.e-float-input.e-numeric.e-input-group {
-        margin-top: 40px;
-    }
-    .label {
-        padding: 24px 0px 10px 0px;
-        font-size: 19px;
-    }
-
- 
-    
-   
     .list {
     float: left;
     margin: 10px;
@@ -76,12 +69,7 @@
         padding-left: 20px;
         display: flex;
     }
-    
-    /*#wrapper {
-        max-width: 280px;
-        margin: 0px auto;
-        padding-top: 20px;
-    }*/
+  
     .tabs-wrap {
         padding: 0 0px 10px;
     }
@@ -89,11 +77,5 @@
         margin-top: 60px;
     }
 
-    .header {
-        text-align: center;
-        border: 4px solid;
-        border-radius: 5px;
-        color: #8A2BE2;
-        border-color: #8A2BE2;
-    }
+
 </style>

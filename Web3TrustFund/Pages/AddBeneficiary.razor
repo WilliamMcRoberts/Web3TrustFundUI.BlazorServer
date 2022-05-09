@@ -10,47 +10,43 @@
 
 
 <PageTitle>Trust Creation</PageTitle>
-<div id ="ControlRegion">
-<div class="col-lg-12 control-section">
-    <div class="control_wrapper">
-        <div class="label color">Enter An Address For The Beneficiary:</div>
-        <SfTextBox Placeholder="@BeneficiaryAddress" @bind-Value="@BeneficiaryAddress" FloatLabelType='@FloatLabelType.Auto'></SfTextBox>
-    </div>
-</div>
-    </div>
-<div id = "ControlRegion">
-    <div class="col-lg-12 control-section">
-        <div class="control_wrapper">
-            <div class="label color">Enter An Amount Of ETH To Deposit:</div>
-            <SfNumericTextBox Placeholder="@AmountEthDeposit.ToString()" @bind-Value="@AmountEthDeposit" FloatLabelType="@FloatLabelType.Auto" TValue="decimal" ValidateDecimalOnType="true" Format="n3" Decimals=18 Min=0></SfNumericTextBox>
+<div class="justify-content-center input-info">
+    <div id = "ControlRegion">
+        <div class="col-lg-12 control-section">
+            <div class="control_wrapper">
+            <div class="fw-bold text-uppercase input-label-top">Enter The Amount Of ETH To Deposit</div>
+                <SfNumericTextBox CssClass="e-corner" Placeholder="ETH Amount" @bind-Value="@AmountEthDeposit" FloatLabelType="@FloatLabelType.Always" TValue="decimal" ValidateDecimalOnType="true" Format="n3" Decimals=18 Min=0></SfNumericTextBox>
+            </div>
         </div>
     </div>
-</div>
-<div id = "ControlRegion">
-	<div class="col-lg-12 control-section">
-    <div class="timepicker-section">
-        <div id="wrapper" class="timepicker-control">
-                <div class="control_wrapper">
-                    <div class="label color">Enter A Date To Release The Funds:</div>
-                    <SfDatePicker TValue="DateTime?" @bind-Value="@ReleaseDate" PlaceHolder="@ReleaseDate.ToString()" Min="@Min" FloatLabelType="@FloatLabelType.Auto"></SfDatePicker>
-                </div>
+    <div id ="ControlRegion">
+        <div class="col-lg-12 control-section">
+            <div class="control_wrapper input-box">
+            <div class="fw-bold text-uppercase input-label-bottom">Enter The Beneficiary ETH Address</div>
+                <SfTextBox CssClass="e-corner" Placeholder="Beneficiary Address" @bind-Value="@BeneficiaryAddress" FloatLabelType='@FloatLabelType.Always'></SfTextBox>
+            </div>
         </div>
-        
     </div>
-</div>
-</div>
-<div class="btn-container">
-    <SfButton @onclick="OnSubmitClicked" class="e-btn">Submit And Create Trust</SfButton>
+    <div id = "ControlRegion">
+        <div class="col-lg-12 control-section">
+            <div class="control_wrapper input-box-bottom">
+            <div class="fw-bold text-uppercase input-label-bottom">Select A Date To Release Funds</div>
+                <SfDatePicker CssClass="e-corner" TValue="DateTime?" @bind-Value="@ReleaseDate" PlaceHolder="Release Date" Min="@Min" FloatLabelType="@FloatLabelType.Always"></SfDatePicker>
+            </div>
+        </div>
+    </div>
+    <div class="button-bottom">
+        <div class="btn-container">
+        <SfButton @onclick="OnSubmitClicked" class="e-btn">Submit And Create Trust</SfButton>
+        </div>
+    </div>
 </div>
 
-<br/>
-<div>
-  
-</div>
+
 
 
 <style>
-
+    
     @@font-face {
         font-family: 'button-icons';
         src: url(data:application/x-font-ttf;charset=utf-8;base64,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) format('truetype');
@@ -60,47 +56,56 @@
     .control_wrapper {
         width: 350px;
         margin: 0 auto;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-
-    
-    .content-wrapper {
-        width: 25%;
-        margin: 0 auto;
-        min-width: 185px;
-		padding-top:25px;
-        padding-bottom:25px;
-    }
-	.e-float-input.e-numeric.e-input-group {
-        margin-top: 40px;
-    }
-    .e-float-input.e-control-wrapper:not(.e-error) input:valid ~ label.e-float-text, .e-float-input.e-control-wrapper:not(.e-error) input ~ label.e-label-top.e-float-text {
-        color: #8A2BE2;
-        font-size: 15px;
+        padding-top: 25px;
+        padding-bottom: 25px;
 
         
-}
-    .e-input-group {
-        color: #8A2BE2;
     }
 
+   .input-box {
+       margin-top: 20px;
+   } 
 
+   .input-box-bottom {
+       margin-top: 18px;
+   } 
 
+   .input-label-top {
+       margin-top: 20px;
+   }
 
-    .label {
-        padding: 24px 0px 10px 0px;
-        font-size: 19px;
-    }
+   .button-bottom {
+       margin-bottom: 40px;
+   }
 
-  
-    
    
+
+    
+    .e-float-input.e-numeric.e-input-group {
+    }
+    .e-float-input.e-control-wrapper:not(.e-error) input:valid ~ label.e-float-text, .e-float-input.e-control-wrapper:not(.e-error) input ~ label.e-label-top.e-float-text {
+        
+        font-size: 15px;
+        font-weight: bold;
+        color: #FFFFFF;
+    }
+
+    .e-input-group.e-corner {
+            border-radius: 15px;
+            
+    }
+
+    .e-input-group {
+        border-color: lightblue;
+        background-color: lightblue;
+    }
+
     .list {
     float: left;
     margin: 10px;
     min-width: 350px;
     }
+   
     .ulstyle {
         margin: 0px;
         padding-left: 20px;
@@ -110,6 +115,7 @@
     .tabs-wrap {
         padding: 0 0px 10px;
     }
+
     .e-bigger .control-section {
         margin-top: 60px;
     }

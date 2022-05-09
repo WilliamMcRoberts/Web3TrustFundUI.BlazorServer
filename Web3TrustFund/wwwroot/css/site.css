@@ -2,17 +2,57 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: linear-gradient(to bottom right, lightblue 30%, #FFB6C1 70%) no-repeat center center fixed;
+    background-size: cover;
 }
 
-a, .btn-link {
-    color: #0366d6;
-}
+/*a, .btn-link {
+    color: #f7f7f7;
+}*/
 
-.btn-primary {
+/*.btn-primary {
     color: #fff;
     background-color: #1b6ec2;
     border-color: #1861ac;
+}*/
+
+
+
+.input-label {
+    
+    font-size: 17px;
 }
+
+.input-info-withdraw {
+    border: 6px solid;
+    border-color: #FFB6C1;
+    /*border-radius: 30px;*/
+    margin-left: 300px;
+    margin-right: 300px;
+    background-color: #FFB6C1;
+    background-image: repeating-radial-gradient(circle, #FFB6C1, #8A2BE2);
+    margin-top: 40px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 45px;
+    border-top-left-radius: 45px;
+}
+
+.input-info {
+    border: 6px solid;
+    border-color: #FFB6C1;
+    /*border-radius: 30px;*/
+    margin-left: 300px;
+    margin-right: 300px;
+    background-color: #FFB6C1;
+    background-image: repeating-radial-gradient(circle, #FFB6C1, #8A2BE2);
+    margin-bottom: 40px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 45px;
+    border-top-left-radius: 45px;
+}
+
 
 app {
     position: relative;
