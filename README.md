@@ -7,7 +7,7 @@ Logs Users In With Metamask:
 ![finishedmm](https://user-images.githubusercontent.com/95720340/167538320-24e7dd35-1256-4d51-bb23-12888c9e8846.png)
 
 
-![finishedLand](https://user-images.githubusercontent.com/95720340/167538333-a3c6527c-1be3-4f15-9398-3e34cbd81b84.png)
+![fin](https://user-images.githubusercontent.com/95720340/167539212-e9aaaf09-5446-44f6-a590-22b1d5227e93.png)
 
 
 Lets Users Create Trust Funds Via Any EVM Compatible Blockchain:
