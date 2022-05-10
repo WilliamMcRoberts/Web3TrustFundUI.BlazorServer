@@ -42,12 +42,7 @@ namespace Web3TrustFund.Shared
                 await GetSelectedNetwork();
                 string SelectedAddressSub = GetSelectedAddressSub(SelectedAddress);
             }
-            else
-            {
-                await ConnectMetaMask();
-            }
-
-            StateHasChanged();
+            
         }
 
         private string GetSelectedAddressSub(string selectedAddress)

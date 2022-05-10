@@ -15,7 +15,7 @@ html, body {
 .input-info-withdraw {
     border: 6px solid;
     border-color: #FFB6C1;
-    margin-left: 300px;
+    margin-left: 200px;
     margin-right: 300px;
     background-color: #FFB6C1;
     background-image: repeating-radial-gradient(circle, #FFB6C1, #8A2BE2);
@@ -24,12 +24,15 @@ html, body {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 45px;
     border-top-left-radius: 45px;
+    width: 75%;
+    margin: 0 auto;
 }
 
 .input-info {
     border: 6px solid;
     border-color: #FFB6C1;
-    margin-left: 300px;
+    margin: 0 auto;
+    margin-left: 200px;
     margin-right: 300px;
     background-color: #FFB6C1;
     background-image: repeating-radial-gradient(circle, #FFB6C1, #8A2BE2);
@@ -38,6 +41,8 @@ html, body {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 45px;
     border-top-left-radius: 45px;
+    width: 75%;
+    margin: 0 auto;
 }
 
 

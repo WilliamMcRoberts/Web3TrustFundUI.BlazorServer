@@ -21,20 +21,18 @@
                 <h2 class="title-text">WEB 3 TRUST FUND</h2>
                 <h6>BANKING ON THE FUTURE</h6>
                 <div style="z-index:1111;padding-top:0px">
-                    @if (IsSiteConnected)
+                    @if (!HasMetaMask)
+                    {
+                        <p>No MetaMask detected. Please install <a href="https://metamask.io" target="_blank">MetaMask</a>.</p>
+
+                    }
+                    else if (IsSiteConnected)
                     {
                         <div class="addy-chain-container">
                             <div class="addy-chain-text">
                                 <p>@SelectedAddressSub</p>
                             </div>
                         </div>
-                        
-            
-                    }
-                    else if (!HasMetaMask)
-                    {
-                        <p>No MetaMask detected. Please install <a href="https://metamask.io" target="_blank">MetaMask</a>.</p>
-
                     }
                     else
                     {
