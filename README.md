@@ -1,6 +1,6 @@
-# Web3TrustFundUI
+UI for Web 3 Trust Fund
 
-A .Net6 Blazor Server UI for Web3TrustFund using Syncfusion components and Twitter APIv2
+A .Net6 Blazor Server Web App using Syncfusion and the Twitter APIv2
 
 Logs Users In With Metamask:
 
@@ -15,7 +15,7 @@ Lets Users Create Trust Funds Via Any EVM Compatible Blockchain:
 
 ![newCreate](https://user-images.githubusercontent.com/95720340/167337952-0f5f48c7-2c86-49bf-9815-572725230a5b.png)
 
-Lets Beneficiaries Withdraw Funds Upon Release Date:
+Lets Beneficiaries Withdraw Funds On Release Date Specified By The Grantor:
 
 ![newWithdraw](https://user-images.githubusercontent.com/95720340/167337963-ecd87ede-0f81-4dea-aa87-c0a8a2f9ba02.png)
 
