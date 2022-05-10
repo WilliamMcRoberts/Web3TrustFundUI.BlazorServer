@@ -11,3 +11,5 @@ global using Microsoft.AspNetCore.Components.Web;
 global using Microsoft.JSInterop;
 global using MetaMask.Blazor.Enums;
 global using Syncfusion.Blazor.Navigations;
+global using TwitterSharp.Request.AdvancedSearch;
+

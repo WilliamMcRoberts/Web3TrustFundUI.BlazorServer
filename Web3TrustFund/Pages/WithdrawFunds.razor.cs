@@ -6,14 +6,14 @@ namespace Web3TrustFund.Pages
     public partial class WithdrawFunds
     {
         [Inject]
-        public MetaMaskService MetaMaskService { get; set; } = default !;
-        public decimal AmountEthWithdraw { get; set; }
+        private MetaMaskService MetaMaskService { get; set; } = default !;
+        private decimal AmountEthWithdraw { get; set; }
 
-        public string? FunctionResult { get; set; }
+        private string? FunctionResult { get; set; }
 
-        public string? RpcResult { get; set; }
+        private string? RpcResult { get; set; }
 
-        public async void OnSubmitClicked()
+        private async void OnSubmitClicked()
         {
             await CallSmartContractFunctionWithdrawFunds(AmountEthWithdraw);
         }
@@ -28,7 +28,7 @@ namespace Web3TrustFund.Pages
             return data;
         }
 
-        public async Task CallSmartContractFunctionWithdrawFunds(decimal amount)
+        private async Task CallSmartContractFunctionWithdrawFunds(decimal amount)
         {
             try
             {

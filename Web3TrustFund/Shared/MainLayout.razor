@@ -7,8 +7,8 @@
 <SfSidebar ID="Sidebar" Type="SidebarType.Push" Width="300px" DockSize="65px" EnableDock="true" @ref="Sidebar" @bind-IsOpen="SidebarToggle">
     <div class="sidebar" style="position:fixed;z-index:1200">
         <div style="background-image:url(../images/cloudy.jpg);" class="topnav navbar navbar-dark">
-            <button class="navbar-toggler" @onclick="ToggleNavMenu" />
-            <a class="navbar-brand" href=""><span class="displayText" style="margin-right:30px;">Web3TrustFund</span></a>
+            <button style="background-color:#8A2BE2;;" class="navbar-toggler background-color:lightblue;" @onclick="ToggleNavMenu" />
+            <a class="text-uppercase navbar-brand" href=""><span class="displayText" style="margin-right:30px;">Web 3 Trust Fund</span></a>
         </div>
         <div style="background-image: url(../images/cloudy.jpg);" @onmouseover="MouseIn" @onmouseout="MouseOut">
             <NavMenu />
@@ -17,17 +17,18 @@
 </SfSidebar>
 <div class="main">
     <div class="header-border">
-        <div class="header-container">
             <div class="header">
                 <h2 class="title-text">WEB 3 TRUST FUND</h2>
                 <h6>BANKING ON THE FUTURE</h6>
                 <div style="z-index:1111;padding-top:0px">
                     @if (IsSiteConnected)
                     {
-                        <div>
-                             <p class="color: #FFFFFF">@SelectedAddressSub : @SelectedNetwork</p>
-
+                        <div class="addy-chain-container">
+                            <div class="addy-chain-text">
+                                <p>@SelectedAddressSub</p>
+                            </div>
                         </div>
+                        
             
                     }
                     else if (!HasMetaMask)
@@ -44,7 +45,6 @@
         
                 </div>
             </div>
-        </div>
     </div>
     
     
@@ -61,6 +61,27 @@
 
 <style>
 
+
+    .addy-chain-text {
+        border: 2px solid;
+        border-color: #8A2BE2;
+        background-color: lightblue;
+        border-radius: 15px;
+        margin-bottom: 1.5rem;
+        padding-top: 15px;
+        width: 25%;
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 20px;
+        color: #8A2BE2;
+
+    }
+
+    .addy-chain-container {
+        display: flex;
+        justify-content: center;
+    }
 
     .sidebar {
         width: 300px;
@@ -81,7 +102,7 @@
 
     .e-btn {
         color: #8A2BE2;
-        background-color: #FFFFFF;
+        background-color: lightblue;
         border-color: #8A2BE2;
         border-radius: 15px;
         border-width: 3px;
@@ -114,7 +135,6 @@
         background-image: url('images/ToggleButton.png');
         transform: scale(0.75);
         transform-origin: left;
-        color: #ffffff;
        
         
     }

@@ -6,17 +6,6 @@ html, body {
     background-size: cover;
 }
 
-/*a, .btn-link {
-    color: #f7f7f7;
-}*/
-
-/*.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}*/
-
-
 
 .input-label {
     
@@ -26,7 +15,6 @@ html, body {
 .input-info-withdraw {
     border: 6px solid;
     border-color: #FFB6C1;
-    /*border-radius: 30px;*/
     margin-left: 300px;
     margin-right: 300px;
     background-color: #FFB6C1;
@@ -41,7 +29,6 @@ html, body {
 .input-info {
     border: 6px solid;
     border-color: #FFB6C1;
-    /*border-radius: 30px;*/
     margin-left: 300px;
     margin-right: 300px;
     background-color: #FFB6C1;
@@ -96,6 +83,8 @@ app {
 
     .sidebar .navbar-brand {
         font-size: 1.1rem;
+
+
     }
 
     .sidebar .oi {

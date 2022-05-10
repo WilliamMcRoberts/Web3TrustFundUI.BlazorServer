@@ -5,21 +5,21 @@ namespace Web3TrustFund.Pages
     public partial class AddBeneficiary
     {
         [Inject]
-        public MetaMaskService MetaMaskService { get; set; } = default !;
-        public DateTime Min { get; set; } = DateTime.Now;
-        public string BeneficiaryAddress { get; set; }
+        private MetaMaskService MetaMaskService { get; set; } = default !;
+        private DateTime Min { get; set; } = DateTime.Now;
+        private string BeneficiaryAddress { get; set; }
 
-        public decimal AmountEthDeposit { get; set; }
-        public DateTime? ReleaseDate { get; set; }
+        private decimal AmountEthDeposit { get; set; }
+        private DateTime? ReleaseDate { get; set; }
 
-        public string? FunctionResult { get; set; }
+        private string? FunctionResult { get; set; }
 
-        public string? RpcResult { get; set; }
+        private string? RpcResult { get; set; }
 
-        public int TimeUntilRelease { get; set; }
+        private int TimeUntilRelease { get; set; }
 
 
-        public async void OnSubmitClicked()
+        private async void OnSubmitClicked()
         {
             
             var timeUntilRelease = ConvertToUnixTimestamp(ReleaseDate);
@@ -28,16 +28,7 @@ namespace Web3TrustFund.Pages
             
         }
 
-        private bool ValidateData()
-        {
-            if (BeneficiaryAddress.Length != 42 && !(AmountEthDeposit > 0))
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public static long ConvertToUnixTimestamp(DateTime? date)
+        private static long ConvertToUnixTimestamp(DateTime? date)
         {
             DateTime newDate = (DateTime)date;
             long timeUntilRelease = newDate.Ticks;
@@ -54,7 +45,7 @@ namespace Web3TrustFund.Pages
             return data;
         }
 
-        public async Task CallSmartContractFunctionAddBeneficiary(string beneficiaryAddress, long timeUntilRelease, decimal amount)
+        private async Task CallSmartContractFunctionAddBeneficiary(string beneficiaryAddress, long timeUntilRelease, decimal amount)
         {
             try
             {

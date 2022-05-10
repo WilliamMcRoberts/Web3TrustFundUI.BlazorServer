@@ -6,24 +6,24 @@ namespace Web3TrustFund.Shared
     public partial class MainLayout
     {
         SfSidebar Sidebar;
-        public bool SidebarToggle = false;
-        public bool SidebarToggleFixed = false;
+        private bool SidebarToggle = false;
+        private bool SidebarToggleFixed = false;
         [Inject]
-        public MetaMaskService MetaMaskService { get; set; } = default !;
-        public string? SelectedAddress { get; set; }
+        private MetaMaskService MetaMaskService { get; set; } = default !;
+        private string? SelectedAddress { get; set; }
 
-        public string? SelectedNetwork { get; set; }
+        private string? SelectedNetwork { get; set; }
 
-        public Chain? Chain { get; set; }
+        private Chain? Chain { get; set; }
 
-        public string? SelectedChain { get; set; }
+        private string? SelectedChain { get; set; }
 
-        public bool IsSiteConnected { get; set; }
+        private bool IsSiteConnected { get; set; }
 
-        public bool HasMetaMask { get; set; } = true;
-        public string? Nonce { get; set; }
+        private bool HasMetaMask { get; set; } = true;
+        private string? Nonce { get; set; }
 
-        public string SelectedAddressSub { get; set; }
+        private string SelectedAddressSub { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -50,29 +50,29 @@ namespace Web3TrustFund.Shared
             StateHasChanged();
         }
 
-        public string GetSelectedAddressSub(string selectedAddress)
+        private string GetSelectedAddressSub(string selectedAddress)
         {
             return SelectedAddressSub = selectedAddress.Substring(0, 6) + "******" + selectedAddress.Substring(38, 4);
         }
 
-        public async Task MetaMaskService_ChainChangedEvent((long, Chain) arg)
+        private async Task MetaMaskService_ChainChangedEvent((long, Chain) arg)
         {
             await GetSelectedAddress();
             StateHasChanged();
         }
 
-        public async Task MetaMaskService_AccountChangedEvent(string arg)
+        private async Task MetaMaskService_AccountChangedEvent(string arg)
         {
             await GetSelectedAddress();
             StateHasChanged();
         }
 
-        public async Task<string> GetSelectedAddress()
+        private async Task<string> GetSelectedAddress()
         {
             return SelectedAddress = await MetaMaskService.GetSelectedAddress();
         }
 
-        public async Task GetSelectedNetwork()
+        private async Task GetSelectedNetwork()
         {
             var chainInfo = await MetaMaskService.GetSelectedChain();
             Chain = chainInfo.chain;
@@ -81,18 +81,18 @@ namespace Web3TrustFund.Shared
             StateHasChanged();
         }
 
-        public async Task ConnectMetaMask()
+        private async Task ConnectMetaMask()
         {
             await MetaMaskService.ConnectMetaMask();
         }
 
-        public void ToggleNavMenu()
+        private void ToggleNavMenu()
         {
             SidebarToggle = !SidebarToggle;
             SidebarToggleFixed = !SidebarToggleFixed;
         }
 
-        public async Task MouseIn(MouseEventArgs args)
+        private async Task MouseIn(MouseEventArgs args)
         {
             var isSidebar = await JS.InvokeAsync<bool>("isSidebar", args.ClientX, args.ClientY);
             if (!SidebarToggle && isSidebar)
@@ -101,7 +101,7 @@ namespace Web3TrustFund.Shared
             }
         }
 
-        public async Task MouseOut(MouseEventArgs args)
+        private async Task MouseOut(MouseEventArgs args)
         {
             var isSidebar = await JS.InvokeAsync<bool>("isSidebar", args.ClientX, args.ClientY);
             if (SidebarToggle && !isSidebar)

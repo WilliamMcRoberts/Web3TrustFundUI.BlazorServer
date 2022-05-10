@@ -10,28 +10,25 @@
 @using TwitterSharp.Request.AdvancedSearch
 @inject IConfiguration _config
 @inject NavigationManager navManager
-
 @inject HttpClient Http
 
-
 <PageTitle>Web 3 Trust Fund</PageTitle>
-
-          
+     
 <div class="tabs-container input-info">
     <SfTab HeaderPlacement="HeaderPosition.Top" CssClass="default-tab" LoadOn="ContentLoad.Init" Height="250px"  Width="550px" OverflowMode="@OverflowMode.Popup" >
         <TabAnimationSettings>
-            <TabAnimationPrevious Effect="AnimationEffect.SlideRightOut"></TabAnimationPrevious>
-            <TabAnimationNext Effect="AnimationEffect.SlideRightIn"></TabAnimationNext>
+            <TabAnimationPrevious Effect="AnimationEffect.FadeZoomOut"></TabAnimationPrevious>
+            <TabAnimationNext Effect="AnimationEffect.FadeZoomIn"></TabAnimationNext>
         </TabAnimationSettings>
         <TabItems>
             <TabItem> 
                 <ChildContent>
-                    <TabHeader Text="Twitter" IconCss="e-twitter"></TabHeader>
+                    <TabHeader Text="TWITTER" IconCss="e-twitter"></TabHeader>
                 </ChildContent>
                 <ContentTemplate>
                     <div>
                         <div class="btn-link-container">
-                            <button @onclick="NavigateToTwitter" class="twitter-button">Go To Twitter</button>
+                            <button @onclick="NavigateToTwitter" class="twitter-button">Follow Us On Twitter!</button>
                         </div>
                         <p class="twitter-content">Web 3 Trust Fund Says:</p>
                         <div class="twitter-content">
@@ -40,77 +37,37 @@
                     </div>
                 </ContentTemplate>
             </TabItem>
-            <TabItem> 
+            <TabItem>
                 <ChildContent>
-                    <TabHeader Text="Facebook" IconCss="e-facebook"></TabHeader>
+                    <TabHeader Text="INFO"></TabHeader>
                 </ChildContent>
+                <ContentTemplate>
+                    <div class="fw-bold con-addy-info">
+                        Web 3 Trust Fund is a decentralized bank. Anyone can create a trust fund that is trustless and tamper-proof. Deposited funds are impervious to inflation or economic collapse. Web 3 Trust Fund believes in a decentralized future, where transparency is the normal way of life. Follow us on Twitter to keep up with news and future releases!
+                    </div>
+                </ContentTemplate>
             </TabItem>
             <TabItem>
                 <ChildContent>
-                    <TabHeader Text="About"></TabHeader>
+                    <TabHeader Text="CONTRACT ADDRESS"></TabHeader>
                 </ChildContent>
-            </TabItem>
-            <TabItem>
-                <ChildContent>
-                    <TabHeader Text="Contract Address"></TabHeader>
-                </ChildContent>
+                <ContentTemplate>
+                    <div class="fw-bold con-addy-info">
+                        Trust Contract Address:  0x9C8A35424B3Acb6651814f2151D8E8A206919fC4
+                    </div>
+                </ContentTemplate>
             </TabItem>
         </TabItems>
     </SfTab> 
 </div>
 
-
-
-@code {
-
-    public static string LatestTweetText { get; set; }
-    public static string bearerToken;
-    public static string userId;
-
-    //TODO - background image
-
-    protected override async Task OnInitializedAsync()
-    {
-        bearerToken = _config.GetValue<string>("Tokens:BearerToken");
-        userId = _config.GetValue<string>("Tokens:UserId");
-        LatestTweetText = await GetLatestTweetByUserId();
-    }
-
-    
-
-    public void NavigateToTwitter()
-    {
-        navManager.NavigateTo("https://twitter.com/web3_trust");
-    }
-
-
-    public static async Task<string> GetLatestTweetByUserId()
-    {
-
-        var client = new TwitterSharp.Client.TwitterClient(bearerToken);
-        var answer = await client.GetTweetsFromUserIdAsync(userId, new TwitterSharp.Request.Option.TweetSearchOptions
-        {
-            TweetOptions = new[] { TweetOption.Attachments },
-            MediaOptions = new[] { MediaOption.Preview_Image_Url }
-        });
-
-        List<string> tweets = new();
-
-        for (int i = 0; i < answer.Length; i++)
-        {
-            var tweet = answer[i];
-            tweets.Add(tweet.Text);
-
-        }
-        return tweets.First();
-    }
-    
-   }
-    
-
-  
 <style>
   
+
+    .con-addy-info {
+        font-size: 20px;
+        text-align: center;
+    }
 
     .e-tab .e-tab-header .e-toolbar-item.e-active {
     background: #d1f4d1;
