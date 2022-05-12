@@ -7,7 +7,7 @@
 <SfSidebar ID="Sidebar" Type="SidebarType.Push" Width="300px" DockSize="65px" EnableDock="true" @ref="Sidebar" @bind-IsOpen="SidebarToggle">
     <div class="sidebar" style="position:fixed;z-index:1200">
         <div style="background-image:url(../images/cloudy.jpg);" class="topnav navbar navbar-dark">
-            <button style="background-color:#8A2BE2;;" class="navbar-toggler background-color:lightblue;" @onclick="ToggleNavMenu" />
+            <button style="background-color:#8A2BE2;" class="navbar-toggler background-color:lightblue;" @onclick="ToggleNavMenu" />
             <a class="text-uppercase navbar-brand" href=""><span class="displayText" style="margin-right:30px;">Web 3 Trust Fund</span></a>
         </div>
         <div style="background-image: url(../images/cloudy.jpg);" @onmouseover="MouseIn" @onmouseout="MouseOut">
@@ -74,6 +74,11 @@
         font-size: 20px;
         color: #8A2BE2;
 
+    }
+    .logo-container {
+        border: thin;
+        border-color: black;
+        
     }
 
     .addy-chain-container {

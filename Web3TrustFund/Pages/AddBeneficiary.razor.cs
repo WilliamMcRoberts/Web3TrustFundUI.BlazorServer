@@ -4,21 +4,29 @@ namespace Web3TrustFund.Pages
 {
     public partial class AddBeneficiary
     {
+        // Metamask wallet injection
         [Inject]
         private MetaMaskService MetaMaskService { get; set; } = default !;
-        private DateTime Min { get; set; } = DateTime.Now;
-        private string BeneficiaryAddress { get; set; }
 
+        // Minimum date for release of funds
+        private DateTime Min { get; set; } = DateTime.Now;
+
+        // Address that the user sets as the beneficiary
+        private string BeneficiaryAddress { get; set; }
+        // Amount of ETH the user is depositing in a trust
         private decimal AmountEthDeposit { get; set; }
+
+        // The DateTime of the release date of a created trust
         private DateTime? ReleaseDate { get; set; }
 
+        // The transaction hash of a called function
         private string? FunctionResult { get; set; }
 
-        private string? RpcResult { get; set; }
+        
 
-        private int TimeUntilRelease { get; set; }
-
-
+        /// <summary>
+        /// Calls the addBeneficiary function when "submit" button is clicked after calling the ConvertToUnixTimeStamp function for the release date
+        /// </summary>
         private async void OnSubmitClicked()
         {
             
@@ -27,7 +35,11 @@ namespace Web3TrustFund.Pages
            
             
         }
-
+        /// <summary>
+        /// Converts a DateTime date to Unix timestamp in seconds
+        /// </summary>
+        /// <param name="date">Release date for the funds of a trust</param>
+        /// <returns>Release date in seconds</returns>
         private static long ConvertToUnixTimestamp(DateTime? date)
         {
             DateTime newDate = (DateTime)date;
@@ -35,6 +47,12 @@ namespace Web3TrustFund.Pages
             return timeUntilRelease;
         }
 
+        /// <summary>
+        /// Encodes the data for the addBeneficiary function of the "Tust" contract
+        /// </summary>
+        /// <param name="beneficiaryAddress">Address of the beneficiary of a created trust</param>
+        /// <param name="timeUntilRelease">Unix time in seconds for the release date of the funds of a creaed trust</param>
+        /// <returns>Data input for the addBeneficiary function</returns>
         private string GetEncodedFunctionAddBeneficiary(string beneficiaryAddress, long timeUntilRelease)
         {
             FunctionABI function = new FunctionABI("addBeneficiary", false);
@@ -45,6 +63,12 @@ namespace Web3TrustFund.Pages
             return data;
         }
 
+        /// <summary>
+        /// Calls the addBeneficiary function of the "Trust" contract
+        /// </summary>
+        /// <param name="beneficiaryAddress">Address of the beneficiary</param>
+        /// <param name="timeUntilRelease">Time in seconds for the release date</param>
+        /// <param name="amount">Amount of ETH the user is depositing in the trust</param>
         private async Task CallSmartContractFunctionAddBeneficiary(string beneficiaryAddress, long timeUntilRelease, decimal amount)
         {
             try

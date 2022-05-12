@@ -5,19 +5,27 @@ namespace Web3TrustFund.Pages
 {
     public partial class WithdrawFunds
     {
+        // Metamask wallet injection
         [Inject]
         private MetaMaskService MetaMaskService { get; set; } = default !;
+        // Amount of ETH the beneficiary is withdrawing
         private decimal AmountEthWithdraw { get; set; }
-
+        // transaction hash of a withraw
         private string? FunctionResult { get; set; }
 
-        private string? RpcResult { get; set; }
-
+        /// <summary>
+        /// Calls the withdrawFunds function when "submit" button is clicked
+        /// </summary>
         private async void OnSubmitClicked()
         {
             await CallSmartContractFunctionWithdrawFunds(AmountEthWithdraw);
         }
 
+        /// <summary>
+        /// Encodes the data for the withdrawFunds function
+        /// </summary>
+        /// <param name="amount">Amount of ETH the beneficiary is withdrawing</param>
+        /// <returns>Data input for withdrawFunds function</returns>
         private string GetEncodedFunctionWithdrawFunds(BigInteger amount)
         {
             FunctionABI function = new FunctionABI("withdrawFunds", false);
@@ -28,6 +36,10 @@ namespace Web3TrustFund.Pages
             return data;
         }
 
+        /// <summary>
+        /// Calls the withdrawFunds function of the "Trust" contract
+        /// </summary>
+        /// <param name="amount">Amount of ETH the beneficiary is withdrawing</param>
         private async Task CallSmartContractFunctionWithdrawFunds(decimal amount)
         {
             try
