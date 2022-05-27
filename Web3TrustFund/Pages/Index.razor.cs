@@ -21,6 +21,8 @@ namespace Web3TrustFund.Pages
             userId = _config.GetValue<string>("Tokens:UserId");
             LatestTweetText = await GetLatestTweetByUserId();
         }
+
+        
         
         /// <summary>
         /// Navigates to Web 3 Trust Fund profile on Twitter when button clicked

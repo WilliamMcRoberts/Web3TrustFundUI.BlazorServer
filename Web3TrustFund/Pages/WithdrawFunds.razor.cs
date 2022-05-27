@@ -7,7 +7,7 @@ namespace Web3TrustFund.Pages
     {
         // Metamask wallet injection
         [Inject]
-        private MetaMaskService MetaMaskService { get; set; } = default !;
+        private MetaMaskService MetaMaskService { get; set; } = default!;
         // Amount of ETH the beneficiary is withdrawing
         private decimal AmountEthWithdraw { get; set; }
         // transaction hash of a withraw

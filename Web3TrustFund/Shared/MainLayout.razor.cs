@@ -5,8 +5,9 @@ namespace Web3TrustFund.Shared
 {
     public partial class MainLayout
     {
-        
+
         // Metamask wallet injection
+        [Inject]
         private MetaMaskService MetaMaskService { get; set; } = default !;
         // Current ETH address of user
         private string? SelectedAddress { get; set; }
