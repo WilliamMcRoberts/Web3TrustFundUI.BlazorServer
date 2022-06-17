@@ -1,6 +1,6 @@
 UI for Web 3 Trust Fund
 
-A .Net6 Blazor Server Web App using Syncfusion and the Twitter APIv2
+A .Net6 Blazor Server Web App using Syncfusion components, MetaMask.Blazor for wallet integration, Nethereum Library, and the Twitter APIv2. Users can create time locked trust funds with an attached address for the beneficiary of funds. Only the beneficiary can withdraw the funds only if the release date has passed. The grantor can withdraw the funds at any time.
 
 Logs Users In With Metamask:
 
