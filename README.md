@@ -1,4 +1,4 @@
-UI for Web 3 Trust Fund
+UI for interacting with the Web 3 Trust Fund Contract
 
 - .NET6 Blazor Server
 - Syncfusion Components
